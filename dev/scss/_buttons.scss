@@ -1,0 +1,49 @@
+@use "sass:color";
+@use "sass:map";
+@use "variables" as *;
+
+a[role="button"],
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  --background: #{$primary};
+
+  background-color: var(--background);
+  border: thin solid var(--background);
+  border-radius: 0.5em;
+  color: $white;
+  display: inline-block;
+  padding: 0.5em 1em;
+  transition: background-color 0.25s ease-out, border-color 0.25s ease-out;
+
+  &:focus {
+    outline: color.adjust($primary, $whiteness: 25%, $alpha: -0.5) solid 0.125em;
+  }
+
+  &:hover {
+    --background: #{color.adjust($primary, $blackness: 10%)};
+  }
+
+  &:active {
+    --background: #{color.adjust($primary, $blackness: 20%)};
+  }
+
+  @each $color-name, $color-value in $colors {
+    &.is-#{$color-name} {
+      --background: #{$color-value};
+
+      &:focus {
+        outline-color: color.adjust($color-value, $whiteness: 25%, $alpha: -0.5);
+      }
+
+      &:hover {
+        --background: #{color.adjust($color-value, $blackness: 10%)};
+      }
+
+      &:active {
+        --background: #{color.adjust($color-value, $blackness: 20%)};
+      }
+    }
+  }
+}

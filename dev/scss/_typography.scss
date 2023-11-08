@@ -1,0 +1,81 @@
+@use "sass:color";
+@use "sass:math";
+@use "variables" as *;
+
+h1 {
+  font-size: 2em;
+  margin: 0 0 math.div(1, 2) * 1em;
+}
+
+h2 {
+  font-size: 1.75em;
+  margin: 0 0 math.div(1, 1.75) * 1em;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin: 0 0 math.div(1, 1.5) * 1em;
+}
+
+h4 {
+  font-size: 1.25em;
+  margin: 0 0 math.div(1, 1.25) * 1em;
+}
+
+h5 {
+  font-size: 1.125em;
+  margin: 0 0 math.div(1, 1.125) * 1em;
+}
+
+h6 {
+  font-size: 1em;
+  margin: 0 0 1em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+dl {
+  margin: 0 0 1em;
+}
+
+ol,
+ul {
+  list-style-position: inside;
+  margin: 0 0 1em;
+  padding: 0;
+
+  ol,
+  ul {
+    margin-bottom: 0.25em;
+    padding-left: 1.5em;
+  }
+}
+
+figure {
+  margin: 0 0 1em;
+  width: max-content;
+
+  figcaption {
+    font-style: italic;
+    margin-top: 0.25em;
+    text-align: center;
+  }
+}
+
+blockquote {
+  border-left: 0.25em solid $primary;
+  margin: 0 0 1em;
+  padding-left: 1em;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: color 0.25s ease-out;
+
+  &:hover {
+    color: color.adjust($link-color, $blackness: 40%);
+  }
+}

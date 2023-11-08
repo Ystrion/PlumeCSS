@@ -1,0 +1,18 @@
+@use "variables" as *;
+
+nav.breadcrumb ul {
+  display: flex;
+  margin-bottom: 0;
+
+  li:not(:first-child)::before {
+    color: $border-color;
+    content: "/";
+    padding: 0 0.75em;
+  }
+
+  li.is-active a {
+    color: inherit;
+    cursor: default;
+    pointer-events: none;
+  }
+}

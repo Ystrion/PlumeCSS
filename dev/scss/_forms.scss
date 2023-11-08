@@ -1,0 +1,85 @@
+@use "sass:color";
+@use "variables" as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+
+  .help {
+    font-size: 80%;
+    margin: 0.5em 0 0;
+  }
+
+  @each $color-name, $color-value in $colors {
+    &.is-#{$color-name} {
+      input[type="email"],
+      input[type="password"],
+      input[type="text"],
+      select,
+      textarea {
+        border-color: $color-value !important;
+
+        &:focus {
+          outline-color: color.adjust($color-value, $whiteness: 25%, $alpha: -0.5);
+        }
+      }
+
+      .help {
+        color: $color-value;
+      }
+    }
+  }
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+select,
+textarea {
+  border: thin solid $border-color;
+  border-radius: 0.5em;
+  display: inline-block;
+  padding: 0.5em 1.5em 0.5em 0.75em;
+  transition: border-color 0.125s ease-out;
+
+  &:focus {
+    border-color: $primary;
+    outline: color.adjust($primary, $whiteness: 25%, $alpha: -0.5) solid 0.125em;
+  }
+
+  &:hover:not(:focus, :disabled) {
+    border-color: color.adjust($border-color, $blackness: 25%);
+  }
+
+  &:disabled {
+    background-color: color.adjust($border-color, $lightness: 15%);
+  }
+
+  @each $color-name, $color-value in $colors {
+    &.is-#{$color-name} {
+      border-color: $color-value;
+      outline-color: color.adjust($color-value, $whiteness: 25%, $alpha: -0.5);
+    }
+  }
+}
+
+select[multiple] {
+  padding: 0;
+
+  option {
+    padding: 0.5em 0.75em;
+  }
+}
+
+textarea {
+  resize: vertical;
+}

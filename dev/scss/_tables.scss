@@ -1,0 +1,16 @@
+@use "variables" as *;
+
+.table-container {
+  margin-bottom: 1em;
+  overflow-x: auto;
+}
+
+table {
+  border: thin solid $border-color;
+
+  th,
+  td {
+    border: thin solid $border-color;
+    padding: 0.5em 0.75em;
+  }
+}
